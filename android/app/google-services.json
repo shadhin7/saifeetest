@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "24702511004",
+    "project_id": "saifee-12d10",
+    "storage_bucket": "saifee-12d10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24702511004:android:8bbe99ad59a53af2ab0a59",
+        "android_client_info": {
+          "package_name": "com.example.saifeetest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALYAth3Z_Ohw49z2GigZ0RVTYgfVKVB-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
