@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:saifeetest/Homep/HomePage.dart';
+import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
 import 'package:saifeetest/Firebase/provider.dart';
-import 'package:saifeetest/SignUp/Terms.dart';
+import 'package:saifeetest/Utils/Terms.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -56,7 +56,7 @@ class _SignUpState extends State<SignUp> {
       Provider.of<UserProvider>(
         context,
         listen: false,
-      ).setName(nameController.text.trim());
+      ).setUserName(nameController.text.trim());
 
       ScaffoldMessenger.of(
         context,
@@ -189,7 +189,6 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 20),
 
-                // Password Field
                 SizedBox(
                   height: 55,
                   width: screenwidth * 0.95,
@@ -347,6 +346,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
                 const SizedBox(height: 30),
               ],
             ),

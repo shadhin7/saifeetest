@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saifeetest/LoginPage/Formlog.dart';
-import 'package:saifeetest/SignUp/signupform.dart';
+import 'package:saifeetest/Screens/Loginscreen/LoginForm.dart';
+import 'package:saifeetest/Screens/signUpScreen/signupform.dart';
 
 class Loginpage extends StatelessWidget {
   const Loginpage({super.key});
@@ -21,8 +21,6 @@ class Loginpage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               SizedBox(height: 20),
-
-              /// 🔽 TabBar comes here
               TabBar(
                 labelStyle: TextStyle(fontSize: 20),
                 // textScaler: TextScaler.linear(10),

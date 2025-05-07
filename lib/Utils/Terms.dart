@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saifeetest/LoginPage/LoginPage.dart';
+import 'package:saifeetest/Screens/Loginscreen/LoginPage.dart';
 
 class TermsandCondition extends StatefulWidget {
   const TermsandCondition({super.key});

@@ -3,9 +3,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:saifeetest/Homep/HomePage.dart';
+import 'package:provider/provider.dart';
+import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
+import 'package:saifeetest/Firebase/provider.dart';
 import 'package:saifeetest/Firebase/reset.dart';
-import 'package:saifeetest/SignUp/Terms.dart';
+import 'package:saifeetest/Utils/Terms.dart';
+import 'package:saifeetest/services/GoogleLogin/authg.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -15,10 +18,12 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LogformState extends State<LoginForm> {
+  final AuthService _authService = AuthService();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isLoading = false;
   bool _isTermAccepted = false;
+  bool _obscurePassword = true;
   Future<void> loginUser() async {
     setState(() {
       isLoading = true;
@@ -137,7 +142,30 @@ class _LogformState extends State<LoginForm> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        final userCredential =
+                            await _authService.signInWithGoogle();
+
+                        if (userCredential != null) {
+                          final displayName =
+                              userCredential.user?.displayName ?? "User";
+
+                          Provider.of<UserProvider>(
+                            context,
+                            listen: false,
+                          ).setUserName(displayName);
+
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => Homepage()),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Google Login failed')),
+                          );
+                        }
+                      },
+
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -211,8 +239,21 @@ class _LogformState extends State<LoginForm> {
                     width: screenwidth * .920,
                     child: TextFormField(
                       controller: passwordController,
-                      obscureText: true,
+                      obscureText: _obscurePassword,
+
                       decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
+                          icon: Icon(
+                            _obscurePassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                        ),
                         labelText: 'Password',
                         labelStyle: TextStyle(
                           color: Colors.grey[700],

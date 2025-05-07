@@ -1,13 +1,17 @@
-// lib/user_provider.dart
 import 'package:flutter/material.dart';
 
-class UserProvider with ChangeNotifier {
-  String _name = '';
+class UserProvider extends ChangeNotifier {
+  String _userName = '';
 
-  String get name => _name;
+  String get userName => _userName;
 
-  void setName(String newName) {
-    _name = newName;
+  void setUserName(String name) {
+    _userName = name;
+    notifyListeners();
+  }
+
+  void clearUserName() {
+    _userName = '';
     notifyListeners();
   }
 }
