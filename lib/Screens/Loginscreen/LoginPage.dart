@@ -14,7 +14,7 @@ class Loginpage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 40),
-              Image.asset('Images/Logo.png', width: 150, height: 100),
+              Image.asset('assets/images/Logo.png', width: 150, height: 100),
               SizedBox(height: 20),
               Text(
                 'Hola!!!',
@@ -23,7 +23,7 @@ class Loginpage extends StatelessWidget {
               SizedBox(height: 20),
               TabBar(
                 labelStyle: TextStyle(fontSize: 20),
-                // textScaler: TextScaler.linear(10),
+
                 indicatorColor: Color.fromRGBO(34, 26, 101, 1),
                 labelColor: Color.fromRGBO(34, 26, 101, 1),
                 unselectedLabelColor: Colors.grey,

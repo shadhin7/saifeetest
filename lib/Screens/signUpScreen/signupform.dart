@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
-import 'package:saifeetest/Firebase/provider.dart';
+import 'package:saifeetest/FireBase/Provider.dart';
+import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
 import 'package:saifeetest/Utils/Terms.dart';
 
 class SignUp extends StatefulWidget {
@@ -64,7 +65,7 @@ class _SignUpState extends State<SignUp> {
 
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => Homepage()),
+        MaterialPageRoute(builder: (context) => NewHomePage()),
         (route) => false,
       );
 
@@ -155,10 +156,12 @@ class _SignUpState extends State<SignUp> {
                   child: TextFormField(
                     controller: emailController,
                     validator: (value) {
-                      if (value == null || value.isEmpty)
+                      if (value == null || value.isEmpty) {
                         return 'Enter your email';
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value))
+                      }
+                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
                         return 'Invalid email';
+                      }
                       return null;
                     },
                     decoration: InputDecoration(

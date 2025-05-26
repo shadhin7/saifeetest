@@ -5,8 +5,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
-import 'package:saifeetest/Firebase/provider.dart';
-import 'package:saifeetest/Firebase/reset.dart';
+import 'package:saifeetest/FireBase/Provider.dart';
+import 'package:saifeetest/FireBase/ResetEmail.dart';
+import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
 import 'package:saifeetest/Utils/Terms.dart';
 import 'package:saifeetest/services/GoogleLogin/authg.dart';
 
@@ -57,7 +58,7 @@ class _LogformState extends State<LoginForm> {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Homepage()),
+        MaterialPageRoute(builder: (context) => NewHomePage()),
       );
       ScaffoldMessenger.of(
         context,
@@ -136,13 +137,17 @@ class _LogformState extends State<LoginForm> {
                     width: screenwidth * .920,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(34, 26, 101, 1),
+                        backgroundColor: Color.fromRGBO(33, 26, 101, 1),
                         foregroundColor: Colors.white,
+
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       onPressed: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
                         final userCredential =
                             await _authService.signInWithGoogle();
 
@@ -157,20 +162,25 @@ class _LogformState extends State<LoginForm> {
 
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => Homepage()),
+                            MaterialPageRoute(
+                              builder: (context) => NewHomePage(),
+                            ),
                           );
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Google Login failed')),
                           );
                         }
+                        setState(() {
+                          isLoading = false;
+                        });
                       },
 
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            'Images/gicon.png',
+                            'assets/images/gicon.png',
                             height: 24,
                             width: 24,
                           ),

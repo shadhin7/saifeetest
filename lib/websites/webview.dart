@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
+import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
 
 class TallyLoginWebView extends StatefulWidget {
   const TallyLoginWebView({super.key});
@@ -22,7 +23,7 @@ class _TallyLoginWebViewState extends State<TallyLoginWebView> {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => Homepage()),
+              MaterialPageRoute(builder: (context) => NewHomePage()),
             );
           },
           icon: Icon(Icons.home, color: Colors.white),

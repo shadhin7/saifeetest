@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
+import 'package:saifeetest/Screens/HomeScreen/HomePage.dart';
 import 'package:saifeetest/Screens/Loginscreen/LoginPage.dart';
-import 'package:saifeetest/Firebase/provider.dart';
+import 'package:saifeetest/FireBase/Provider.dart';
 import 'package:saifeetest/Utils/splashscreen.dart';
 
 class AuthWrapper extends StatelessWidget {
@@ -25,7 +26,7 @@ class AuthWrapper extends StatelessWidget {
             context,
             listen: false,
           ).setUserName(displayName);
-          return const Homepage();
+          return NewHomePage();
         } else {
           return const Loginpage();
         }
