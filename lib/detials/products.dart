@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saifeetest/detials/TallySingleUser.dart';
+import 'package:saifeetest/Detials/ProductDisplay.dart';
 
 class ProductsTally extends StatelessWidget {
   ProductsTally({super.key});
