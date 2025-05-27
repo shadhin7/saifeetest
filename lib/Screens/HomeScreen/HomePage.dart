@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:saifeetest/FireBase/Provider.dart';
 import 'package:saifeetest/Screens/Loginscreen/LoginPage.dart';
 import 'package:saifeetest/Utils/splashLoading.dart';
-import 'package:saifeetest/detials/TallySingleUser.dart';
 import 'package:saifeetest/detials/products.dart';
 import 'package:saifeetest/services/GoogleLogin/authg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,14 +21,14 @@ class NewHomePage extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
+        width: 210,
         child: ListView(
           children: [
             DrawerHeader(
               decoration: BoxDecoration(color: Color.fromRGBO(34, 26, 101, 1)),
               child: ListTile(
-                title: CircleAvatar(radius: 40),
-                subtitle: Text(
-                  '     Hola $userName',
+                title: Text(
+                  'Hola $userName',
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
@@ -65,6 +64,8 @@ class NewHomePage extends StatelessWidget {
                 );
               },
             ),
+            SizedBox(height: 50),
+
             TextButton(
               onPressed: () async {
                 final shouldLogout = await showDialog<bool>(
@@ -79,7 +80,7 @@ class NewHomePage extends StatelessWidget {
                             onPressed: () => Navigator.pop(context, false),
                           ),
                           TextButton(
-                            child: Text("Sign Out"),
+                            child: Text("Log Out"),
                             onPressed: () => Navigator.pop(context, true),
                           ),
                         ],

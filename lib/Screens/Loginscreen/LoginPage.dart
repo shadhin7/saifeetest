@@ -34,7 +34,7 @@ class Loginpage extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     Center(child: LoginForm()),
-                    Center(child: SignUp()),
+                    Center(child: SignUpForm()),
                   ],
                 ),
               ),
